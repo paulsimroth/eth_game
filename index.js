@@ -1,3 +1,8 @@
+//Variables
+var cursors;
+var knight;
+var crates
+
 //Configuration of the game
 const config = {
     width: 900,
@@ -29,13 +34,14 @@ function gamePreload() {
 
 //initial setup logic
 function gameCreate() {
-    //Knight created and scaled
-    var knight = this.physics.add.sprite(100,100,"knight");
+    //Knight created, hitbox size set, knight scaled
+    knight = this.physics.add.sprite(100,100,"knight");
+    knight.body.setSize(400,600,10,0);
     knight.scaleX = 0.2;
     knight.scaleY = 0.2;
 
     //Floor created out of crates
-    var crates = this.physics.add.staticGroup();
+    crates = this.physics.add.staticGroup();
     crates.create(40,560,"crate");
     crates.create(120,560,"crate");
     crates.create(200,560,"crate");
@@ -45,11 +51,25 @@ function gameCreate() {
 
     //Collider set for knight and floor
     this.physics.add.collider(crates, knight);
+
+    cursors = this.input.keyboard.createCursorKeys();
 };
 
-//Monitoring imputs and updating game
+//Monitoring inputs and updating game
 function gameUpdate() {
+    if(cursors.left.isDown){
+        knight.setVelocityX(-200);
+    } 
+    else if(cursors.right.isDown){
+        knight.setVelocityX(200);
+    }
+    else{
+        knight.setVelocityX(0);
+    }
 
+    if(cursors.up.isDown && knight.body.touching.down) {
+        knight.setVelocityY(-300);
+    }
 };
 
 //Game
