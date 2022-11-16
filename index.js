@@ -18,7 +18,7 @@ const config = {
     physics:{
         default: "arcade",
         arcade:{
-            gravity: {y:400},
+            gravity: {y:500},
             debug: true
         }
     }
@@ -30,6 +30,30 @@ function gamePreload() {
     this.load.image("knight", "assets/knight.png");
     this.load.image("background", "assets/background.png");
     this.load.image("crate", "assets/crate.png");
+
+    //Load running animation frames
+    this.load.image("knight_runFrame_1", "assets/knight/run/Run (1).png");
+    this.load.image("knight_runFrame_2", "assets/knight/run/Run (2).png");
+    this.load.image("knight_runFrame_3", "assets/knight/run/Run (3).png");
+    this.load.image("knight_runFrame_4", "assets/knight/run/Run (4).png");
+    this.load.image("knight_runFrame_5", "assets/knight/run/Run (5).png");
+    this.load.image("knight_runFrame_6", "assets/knight/run/Run (6).png");
+    this.load.image("knight_runFrame_7", "assets/knight/run/Run (7).png");
+    this.load.image("knight_runFrame_8", "assets/knight/run/Run (8).png");
+    this.load.image("knight_runFrame_9", "assets/knight/run/Run (9).png");
+    this.load.image("knight_runFrame_10", "assets/knight/run/Run (10).png");
+
+    //Load idle animation frames
+    this.load.image("knight_idleFrame_1", "assets/knight/idle/Idle (1).png");
+    this.load.image("knight_idleFrame_2", "assets/knight/idle/Idle (2).png");
+    this.load.image("knight_idleFrame_3", "assets/knight/idle/Idle (3).png");
+    this.load.image("knight_idleFrame_4", "assets/knight/idle/Idle (4).png");
+    this.load.image("knight_idleFrame_5", "assets/knight/idle/Idle (5).png");
+    this.load.image("knight_idleFrame_6", "assets/knight/idle/Idle (6).png");
+    this.load.image("knight_idleFrame_7", "assets/knight/idle/Idle (7).png");
+    this.load.image("knight_idleFrame_8", "assets/knight/idle/Idle (8).png");
+    this.load.image("knight_idleFrame_9", "assets/knight/idle/Idle (9).png");
+    this.load.image("knight_idleFrame_10", "assets/knight/idle/Idle (10).png");
 };
 
 //initial setup logic
@@ -63,9 +87,47 @@ function gameCreate() {
     crates.create(710,510,"crate");
     crates.create(790,300,"crate");
 
+    //animations
+    this.anims.create({
+        key: "knight_run",
+        frames:[
+            {key: "knight_runFrame_1"},
+            {key: "knight_runFrame_2"},
+            {key: "knight_runFrame_3"},
+            {key: "knight_runFrame_4"},
+            {key: "knight_runFrame_5"},
+            {key: "knight_runFrame_6"},
+            {key: "knight_runFrame_7"},
+            {key: "knight_runFrame_8"},
+            {key: "knight_runFrame_9"},
+            {key: "knight_runFrame_10"}
+        ],
+        frameRate: 10,
+        repeat: 1
+    });
+
+    this.anims.create({
+        key: "knight_idle",
+        frames:[
+            {key: "knight_idleFrame_1"},
+            {key: "knight_idleFrame_2"},
+            {key: "knight_idleFrame_3"},
+            {key: "knight_idleFrame_4"},
+            {key: "knight_idleFrame_5"},
+            {key: "knight_idleFrame_6"},
+            {key: "knight_idleFrame_7"},
+            {key: "knight_idleFrame_8"},
+            {key: "knight_idleFrame_9"},
+            {key: "knight_idleFrame_10"}
+        ],
+        frameRate: 10,
+        repeat: 1
+    });
+
     //Collider set for knight and floor
     this.physics.add.collider(crates, knight);
 
+    //Keyboard inputs
     cursors = this.input.keyboard.createCursorKeys();
 };
 
@@ -73,16 +135,21 @@ function gameCreate() {
 function gameUpdate() {
     if(cursors.left.isDown){
         knight.setVelocityX(-200);
+        knight.play("knight_run", true);
+        knight.flipX = true;
     } 
     else if(cursors.right.isDown){
         knight.setVelocityX(200);
+        knight.play("knight_run", true);
+        knight.flipX = false;
     }
     else{
         knight.setVelocityX(0);
+        knight.play("knight_idle", true)
     }
 
     if(cursors.up.isDown && knight.body.touching.down) {
-        knight.setVelocityY(-300);
+        knight.setVelocityY(-350);
     }
 };
 
