@@ -1,7 +1,10 @@
 //Variables
 var cursors;
 var knight;
-var crates
+var crates;
+var coinTimer;
+var coins;
+var score = 0;
 
 //Configuration of the game
 const config = {
@@ -19,7 +22,7 @@ const config = {
         default: "arcade",
         arcade:{
             gravity: {y:500},
-            debug: true
+            debug: false
         }
     }
 };
@@ -30,6 +33,7 @@ function gamePreload() {
     this.load.image("knight", "assets/knight.png");
     this.load.image("background", "assets/background.png");
     this.load.image("crate", "assets/crate.png");
+    this.load.image("bitcoin", "assets/bitcoin.png");
 
     //Load running animation frames
     this.load.image("knight_runFrame_1", "assets/knight/run/Run (1).png");
@@ -129,6 +133,41 @@ function gameCreate() {
 
     //Keyboard inputs
     cursors = this.input.keyboard.createCursorKeys();
+
+    //Event for generating coins
+    coinTimer = this.time.addEvent({
+        delay: Phaser.Math.Between(1000, 5000),
+        callback: generateCoins,
+        callbackScope: this,
+        repeat: -1
+    });
+
+    //Generating Coins
+    function generateCoins() {
+        coins = this.physics.add.group({
+            key: "bitcoin",
+            repeat: 1,
+            setXY:{
+                x: Phaser.Math.Between(0, 900),
+                y: -50,
+                stepX: Phaser.Math.Between(30, 100)
+            }
+        });
+
+        coins.children.iterate(function(child){
+        child.setBounceY(Phaser.Math.FloatBetween(0.3, 1.5))
+        });
+
+        this.physics.add.collider(coins,crates);
+        this.physics.add.overlap(knight, coins, collectCoin, null, this);
+    
+    };
+
+    function collectCoin(knight, coin){
+        coin.disableBody(true, true);
+        score++;
+    };
+
 };
 
 //Monitoring inputs and updating game
