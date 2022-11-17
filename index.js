@@ -2,9 +2,17 @@
 var cursors;
 var knight;
 var crates;
+
 var coinTimer;
 var coins;
+
 var score = 0;
+var scoreText;
+
+var secondsLeft = 60;
+var timeLeftText;
+var timeLeftTimer;
+var gameOver = false;
 
 //Configuration of the game
 const config = {
@@ -131,16 +139,42 @@ function gameCreate() {
     //Collider set for knight and floor
     this.physics.add.collider(crates, knight);
 
+    //Score Text
+    scoreText = this.add.text(16, 16, "Bitcoin Bag: 0", {fontSize:"32px", fill:"#000"});
+
+    //Time Left Text
+    timeLeftText = this.add.text(16, 66, secondsLeft + " Seconds left", {fontSize:"30px", fill:"#000"});
+
     //Keyboard inputs
     cursors = this.input.keyboard.createCursorKeys();
 
-    //Event for generating coins
+    //Timer for generating coins
     coinTimer = this.time.addEvent({
         delay: Phaser.Math.Between(1000, 5000),
         callback: generateCoins,
         callbackScope: this,
         repeat: -1
     });
+
+    //Timer for time left
+    timeLeftTimer = this.time.addEvent({
+        delay: 1000,
+        callback: updateTimeLeft,
+        callbackScope: this,
+        repeat: -1
+    });
+
+    function updateTimeLeft() {
+        if(gameOver) return;
+
+        secondsLeft -= 1;
+        timeLeftText.setText(secondsLeft + " Seconds left");
+
+        if(secondsLeft <= 0){
+            this.physics.pause();
+            gameOver = true;
+        }
+    };
 
     //Generating Coins
     function generateCoins() {
@@ -166,6 +200,7 @@ function gameCreate() {
     function collectCoin(knight, coin){
         coin.disableBody(true, true);
         score++;
+        scoreText.setText("Bitcoin Bag: " + score);
     };
 
 };
