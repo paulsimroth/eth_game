@@ -1,4 +1,6 @@
-const contractAddress = 0xAf9169D7C299173870e9bcA0F9212AC20c485c4;
+//WEB3 Fucntions
+let provider, signer, instance, marketInstance, user, address;
+const contractAddress = "0x7BEd2969e6760c6c33B42949F16554c7132C743a";
 
 async function login() {
     provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -21,13 +23,15 @@ walletButton.addEventListener('click', async() => {
     };
 });
 
-async function mintAfterGame(address, tokenCount) {
+async function mintAfterGame(tokenCount) {
+    var _address = address;
     try{
-        const tx = await signer.mint(address, tokenCount);
+        const tx = await signer.mint(_address, tokenCount);
         const receipt = await tx.wait();
-        
+        console.log(receipt);
+        alert("Transaction complete: " + receipt);
     } catch (error){
-        
+        alert("Transaction failed: " + error);
         console.log(error);
     };
 }
