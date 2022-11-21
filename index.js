@@ -151,7 +151,7 @@ function gameCreate() {
 
     //Timer for generating coins
     coinTimer = this.time.addEvent({
-        delay: Phaser.Math.Between(1000, 5000),
+        delay: Phaser.Math.Between(500, 4000),
         callback: generateCoins,
         callbackScope: this,
         repeat: -1
@@ -164,52 +164,51 @@ function gameCreate() {
         callbackScope: this,
         repeat: -1
     });
+};
 
-    async function updateTimeLeft() {
-        if(gameOver){
-            if(!coinsSent){
-                await mintAfterGame(score);
-                coinsSent = true;
-            };
-            return;
-          };
-
-        secondsLeft -= 1;
-        timeLeftText.setText(secondsLeft + " Seconds left");
-
-        if(secondsLeft <= 0){
-            this.physics.pause();
-            gameOver = true;
-        }
+async function updateTimeLeft() {
+    if(gameOver){
+        if(!coinsSent){
+            await mintAfterGame(score);
+            coinsSent = true;
+        };
+        return;
     };
 
-    //Generating Coins
-    function generateCoins() {
-        coins = this.physics.add.group({
-            key: "bitcoin",
-            repeat: 1,
-            setXY:{
-                x: Phaser.Math.Between(0, 900),
-                y: -50,
-                stepX: Phaser.Math.Between(30, 100)
-            }
-        });
+    secondsLeft -= 1;
+    timeLeftText.setText(secondsLeft + " Seconds left");
 
-        coins.children.iterate(function(child){
-        child.setBounceY(Phaser.Math.FloatBetween(0.3, 1.5))
-        });
-
-        this.physics.add.collider(coins,crates);
-        this.physics.add.overlap(knight, coins, collectCoin, null, this);
+    if(secondsLeft <= 0){
+        this.physics.pause();
+        gameOver = true;
+    }
+};
     
-    };
+//Generating Coins
+function generateCoins() {
+    coins = this.physics.add.group({
+        key: "bitcoin",
+        repeat: 1,
+        setXY:{
+            x: Phaser.Math.Between(0, 900),
+            y: -50,
+            stepX: Phaser.Math.Between(30, 100)
+        }
+    });
 
-    function collectCoin(knight, coin){
-        coin.disableBody(true, true);
-        score++;
-        scoreText.setText("Bitcoin Bag: " + score);
-    };
+    coins.children.iterate(function(child){
+    child.setBounceY(Phaser.Math.FloatBetween(0.3, 1.5))
+    });
 
+    this.physics.add.collider(coins,crates);
+    this.physics.add.overlap(knight, coins, collectCoin, null, this);
+
+};
+
+function collectCoin(knight, coin){
+    coin.disableBody(true, true);
+    score++;
+    scoreText.setText("Bitcoin Bag: " + score);
 };
 
 //Monitoring inputs and updating game
