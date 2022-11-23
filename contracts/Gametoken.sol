@@ -6,7 +6,7 @@ import "../node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract GameToken is ERC20 {
 
-    constructor(string memory _name, string memory _symbol) ERC20("GameToken", "EGT") public {}
+    constructor(string memory _name, string memory _symbol) ERC20("GameToken", "EGT") {}
 
     function mint(address to, uint256 value) public returns (bool) {
         _mint(to, value);

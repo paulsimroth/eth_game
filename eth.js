@@ -31,7 +31,7 @@ async function mintAfterGame(tokenCount) {
         const tx = await signer.mint(_address, tokenCount);
         const receipt = await tx.wait();
         console.log(receipt);
-        alert("Transaction complete: " + receipt);
+        alert("Transaction complete! Block Hash:" + receipt.blockHash);
     } catch (error){
         alert("Transaction failed: " + error.message);
         console.log(error);
