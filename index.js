@@ -13,7 +13,6 @@ let secondsLeft = 60;
 let timeLeftText;
 let timeLeftTimer;
 let gameOver = false;
-let coinsSent = false;
 
 //Configuration of the game
 const config = {
@@ -167,12 +166,7 @@ function gameCreate() {
 };
 
 async function updateTimeLeft() {
-    if(gameOver){
-        if(!coinsSent){
-            coinsSent = true;
-            await mintAfterGame(score);
-
-        };
+    if(gameOver) {
         return;
     };
 

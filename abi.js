@@ -150,7 +150,8 @@ const abi = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -174,7 +175,8 @@ const abi = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -198,7 +200,8 @@ const abi = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -301,7 +304,8 @@ const abi = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -320,7 +324,8 @@ const abi = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -367,7 +372,8 @@ const marketAbi = [
   },
   {
     "stateMutability": "payable",
-    "type": "fallback"
+    "type": "fallback",
+    "payable": true
   },
   {
     "inputs": [
@@ -380,7 +386,8 @@ const marketAbi = [
     "name": "buyToken",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function"
+    "type": "function",
+    "payable": true
   },
   {
     "inputs": [

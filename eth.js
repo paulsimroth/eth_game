@@ -1,15 +1,15 @@
 //WEB3 Fucntions
 let provider, signer, instance, user, address;
-const contractAddress = "0x68B7b3F278e9243003cC9c68bEA9D2cB62041B50";
-const marketAddress = "";
+const tokenAddress = "0xaaeC249CcaDECf95e52b6fa4bB58704083D63c7D";
+const marketAddress = "0x081F02d2ABD88956325F77C1eD677E5038c8E06E";
 
 async function login() {
     provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     user = provider.getSigner();
     address = await user.getAddress();
-    
-    instance = new ethers.Contract(contractAddress, abi, provider);
+
+    instance = new ethers.Contract(tokenAddress, abi, provider);
     signer = instance.connect(user);
     
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
@@ -17,6 +17,7 @@ async function login() {
 };
 
 const walletButton = document.querySelector('#enableWeb3');
+
 walletButton.addEventListener('click', async() => {
     //Will Start the metamask extension
     if (window.ethereum) { 
@@ -28,12 +29,9 @@ walletButton.addEventListener('click', async() => {
     };
 });
 
-async function mintAfterGame(tokenCount) {
-    let _address = address;
+async function buy(id) {
     try{
-        console.log("tokenCount", tokenCount);
-        console.log("_address", _address);
-        const tx = await signer.mint(_address, tokenCount);
+        const tx = await marketSigner.buyToken(id);
         const receipt = await tx.wait();
         console.log(receipt);
         alert("Transaction complete! Block Hash:" + receipt.blockHash);

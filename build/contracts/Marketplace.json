@@ -14,7 +14,8 @@
     },
     {
       "stateMutability": "payable",
-      "type": "fallback"
+      "type": "fallback",
+      "payable": true
     },
     {
       "inputs": [
@@ -27,7 +28,8 @@
       "name": "buyToken",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -5290,12 +5292,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xd3239f05886A94a9D45371f1067ee1B7c5eE176B",
-      "transactionHash": "0x09cfb42105de029ed20fdd74507264204ca2824afd0fab8178c2ab2755c985af"
+      "address": "0x081F02d2ABD88956325F77C1eD677E5038c8E06E",
+      "transactionHash": "0xc954ba4803cd380f25c3b966d63af021be49e8c0085951d2fa971f6f7cb76b1e"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-11-23T16:32:38.174Z",
+  "updatedAt": "2022-11-23T16:55:40.145Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
