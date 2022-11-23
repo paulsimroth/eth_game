@@ -5,9 +5,7 @@ import "../node_modules/@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
 contract NFToken is ERC1155 {
 
-    constructor() {
+    constructor(string memory uri) ERC1155(uri){
 
     }
-
-
 }

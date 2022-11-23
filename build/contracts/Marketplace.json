@@ -14,7 +14,8 @@
     },
     {
       "stateMutability": "payable",
-      "type": "fallback"
+      "type": "fallback",
+      "payable": true
     },
     {
       "inputs": [
@@ -27,7 +28,8 @@
       "name": "buyToken",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -356,7 +358,7 @@
                 }
               ]
             },
-            "name": "cleanup_t_contract$_IERC1155_$1537",
+            "name": "cleanup_t_contract$_IERC1155_$1549",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -435,7 +437,7 @@
                               }
                             ],
                             "functionName": {
-                              "name": "cleanup_t_contract$_IERC1155_$1537",
+                              "name": "cleanup_t_contract$_IERC1155_$1549",
                               "nodeType": "YulIdentifier",
                               "src": "777:34:15"
                             },
@@ -465,7 +467,7 @@
                 }
               ]
             },
-            "name": "validator_revert_t_contract$_IERC1155_$1537",
+            "name": "validator_revert_t_contract$_IERC1155_$1549",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -519,7 +521,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "validator_revert_t_contract$_IERC1155_$1537",
+                      "name": "validator_revert_t_contract$_IERC1155_$1549",
                       "nodeType": "YulIdentifier",
                       "src": "970:43:15"
                     },
@@ -531,7 +533,7 @@
                 }
               ]
             },
-            "name": "abi_decode_t_contract$_IERC1155_$1537_fromMemory",
+            "name": "abi_decode_t_contract$_IERC1155_$1549_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -681,7 +683,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "abi_decode_t_contract$_IERC1155_$1537_fromMemory",
+                          "name": "abi_decode_t_contract$_IERC1155_$1549_fromMemory",
                           "nodeType": "YulIdentifier",
                           "src": "1319:48:15"
                         },
@@ -700,7 +702,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_contract$_IERC1155_$1537_fromMemory",
+            "name": "abi_decode_tuple_t_contract$_IERC1155_$1549_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -728,7 +730,7 @@
           }
         ]
       },
-      "contents": "{\n\n    function allocate_unbounded() -> memPtr {\n        memPtr := mload(64)\n    }\n\n    function revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() {\n        revert(0, 0)\n    }\n\n    function revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db() {\n        revert(0, 0)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_contract$_IERC1155_$1537(value) -> cleaned {\n        cleaned := cleanup_t_address(value)\n    }\n\n    function validator_revert_t_contract$_IERC1155_$1537(value) {\n        if iszero(eq(value, cleanup_t_contract$_IERC1155_$1537(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_contract$_IERC1155_$1537_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_contract$_IERC1155_$1537(value)\n    }\n\n    function abi_decode_tuple_t_contract$_IERC1155_$1537_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_contract$_IERC1155_$1537_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n}\n",
+      "contents": "{\n\n    function allocate_unbounded() -> memPtr {\n        memPtr := mload(64)\n    }\n\n    function revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() {\n        revert(0, 0)\n    }\n\n    function revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db() {\n        revert(0, 0)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_contract$_IERC1155_$1549(value) -> cleaned {\n        cleaned := cleanup_t_address(value)\n    }\n\n    function validator_revert_t_contract$_IERC1155_$1549(value) {\n        if iszero(eq(value, cleanup_t_contract$_IERC1155_$1549(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_contract$_IERC1155_$1549_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_contract$_IERC1155_$1549(value)\n    }\n\n    function abi_decode_tuple_t_contract$_IERC1155_$1549_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_contract$_IERC1155_$1549_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n}\n",
       "id": 15,
       "language": "Yul",
       "name": "#utility.yul"
@@ -3708,10 +3710,10 @@
     "absolutePath": "project:/contracts/Marketplace.sol",
     "exportedSymbols": {
       "IERC1155": [
-        1537
+        1549
       ],
       "IERC165": [
-        2671
+        2683
       ],
       "Marketplace": [
         156
@@ -3742,7 +3744,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 157,
-        "sourceUnit": 1538,
+        "sourceUnit": 1550,
         "src": "69:76:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3774,7 +3776,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IERC1155_$1537",
+              "typeIdentifier": "t_contract$_IERC1155_$1549",
               "typeString": "contract IERC1155"
             },
             "typeName": {
@@ -3784,13 +3786,13 @@
                 "id": 38,
                 "name": "IERC1155",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 1537,
+                "referencedDeclaration": 1549,
                 "src": "177:8:1"
               },
-              "referencedDeclaration": 1537,
+              "referencedDeclaration": 1549,
               "src": "177:8:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC1155_$1537",
+                "typeIdentifier": "t_contract$_IERC1155_$1549",
                 "typeString": "contract IERC1155"
               }
             },
@@ -3871,7 +3873,7 @@
                               "referencedDeclaration": 47,
                               "src": "307:5:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IERC1155_$1537",
+                                "typeIdentifier": "t_contract$_IERC1155_$1549",
                                 "typeString": "contract IERC1155"
                               }
                             }
@@ -3879,7 +3881,7 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_IERC1155_$1537",
+                                "typeIdentifier": "t_contract$_IERC1155_$1549",
                                 "typeString": "contract IERC1155"
                               }
                             ],
@@ -4041,7 +4043,7 @@
                       "referencedDeclaration": 40,
                       "src": "339:6:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IERC1155_$1537",
+                        "typeIdentifier": "t_contract$_IERC1155_$1549",
                         "typeString": "contract IERC1155"
                       }
                     },
@@ -4055,13 +4057,13 @@
                       "referencedDeclaration": 47,
                       "src": "348:5:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IERC1155_$1537",
+                        "typeIdentifier": "t_contract$_IERC1155_$1549",
                         "typeString": "contract IERC1155"
                       }
                     },
                     "src": "339:14:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC1155_$1537",
+                      "typeIdentifier": "t_contract$_IERC1155_$1549",
                       "typeString": "contract IERC1155"
                     }
                   },
@@ -4322,7 +4324,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IERC1155_$1537",
+                    "typeIdentifier": "t_contract$_IERC1155_$1549",
                     "typeString": "contract IERC1155"
                   },
                   "typeName": {
@@ -4332,13 +4334,13 @@
                       "id": 45,
                       "name": "IERC1155",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1537,
+                      "referencedDeclaration": 1549,
                       "src": "264:8:1"
                     },
-                    "referencedDeclaration": 1537,
+                    "referencedDeclaration": 1549,
                     "src": "264:8:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC1155_$1537",
+                      "typeIdentifier": "t_contract$_IERC1155_$1549",
                       "typeString": "contract IERC1155"
                     }
                   },
@@ -4879,7 +4881,7 @@
                         "referencedDeclaration": 40,
                         "src": "774:6:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IERC1155_$1537",
+                          "typeIdentifier": "t_contract$_IERC1155_$1549",
                           "typeString": "contract IERC1155"
                         }
                       },
@@ -4890,7 +4892,7 @@
                       "lValueRequested": false,
                       "memberName": "safeTransferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1520,
+                      "referencedDeclaration": 1532,
                       "src": "774:23:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_uint256_$_t_bytes_memory_ptr_$returns$__$",
@@ -5286,9 +5288,17 @@
     "name": "solc",
     "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x3e22ed6c749AfDf44d225cF479a993E8B3A1d46c",
+      "transactionHash": "0xfe5137c22e505cfe32eb0d035ece0fdec08eb8c0b974819c619f8dd8cd380e78"
+    }
+  },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-11-23T11:11:06.986Z",
+  "updatedAt": "2022-11-23T14:04:13.379Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
