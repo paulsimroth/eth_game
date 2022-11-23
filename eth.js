@@ -1,6 +1,6 @@
 //WEB3 Fucntions
 let provider, signer, instance, user, address;
-const contractAddress = "0xeF1466fFC8FcA1b31BDd65019A323CA911E52825";
+const contractAddress = "0x68B7b3F278e9243003cC9c68bEA9D2cB62041B50";
 
 async function login() {
     provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -25,8 +25,9 @@ walletButton.addEventListener('click', async() => {
 
 async function mintAfterGame(tokenCount) {
     let _address = address;
-    console.log("_address", _address);
     try{
+        console.log("tokenCount", tokenCount);
+        console.log("_address", _address);
         const tx = await signer.mint(_address, tokenCount);
         const receipt = await tx.wait();
         console.log(receipt);

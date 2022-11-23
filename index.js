@@ -1,19 +1,19 @@
 //Variables
-var cursors;
-var knight;
-var crates;
+let cursors;
+let knight;
+let crates;
 
-var coinTimer;
-var coins;
+let coinTimer;
+let coins;
 
-var score = 0;
-var scoreText;
+let score = 0;
+let scoreText;
 
-var secondsLeft = 60;
-var timeLeftText;
-var timeLeftTimer;
-var gameOver = false;
-var coinsSent = false;
+let secondsLeft = 60;
+let timeLeftText;
+let timeLeftTimer;
+let gameOver = false;
+let coinsSent = false;
 
 //Configuration of the game
 const config = {
@@ -169,8 +169,9 @@ function gameCreate() {
 async function updateTimeLeft() {
     if(gameOver){
         if(!coinsSent){
-            await mintAfterGame(score);
             coinsSent = true;
+            await mintAfterGame(score);
+
         };
         return;
     };
