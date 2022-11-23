@@ -1,14 +1,19 @@
 //WEB3 Fucntions
 let provider, signer, instance, user, address;
 const contractAddress = "0x68B7b3F278e9243003cC9c68bEA9D2cB62041B50";
+const marketAddress = "";
 
 async function login() {
     provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     user = provider.getSigner();
     address = await user.getAddress();
+    
     instance = new ethers.Contract(contractAddress, abi, provider);
     signer = instance.connect(user);
+    
+    marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
+    marketSigner = marketInstance.connect(user);
 };
 
 const walletButton = document.querySelector('#enableWeb3');

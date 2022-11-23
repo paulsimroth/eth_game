@@ -1,7 +1,7 @@
-const _token_migration = require("./3_token_migration");
+const _token_migration = require("./2_token_migration");
 
 const Marketplace = artifacts.require("Marketplace");
-const NFToken = artifacts.require("NFToken");
+const GameToken = artifacts.require("GameToken");
 
 module.exports = (deployer) => deployer
 /*   .then( () => createToken1())
@@ -22,7 +22,7 @@ async function createToken3() {
 }; */
 
 function mintTokens() {
-  NFToken.deployed().then(instance => {
+  GameToken.deployed().then(instance => {
     instance.mint(Marketplace.address, 1, 30);
     instance.mint(Marketplace.address, 2, 20);
     instance.mint(Marketplace.address, 3, 10);

@@ -1,17 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-import "../node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
-//This is the ERC20 Token which gets transferred at the end of the game
-//1 Coin collected in game == 1 GameToken
+contract GameToken is ERC1155 {
 
-contract GameToken is ERC20 {
+    constructor(string memory uri) ERC1155(uri){
 
-    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {}
+    }
 
-    function mint(address to, uint256 value) public returns (bool) {
-        _mint(to, value);
+    /**
+    * @dev Creates `amount` tokens of token type `id`, and assigns them to `to`.
+    * Calls {_mint} to handle minting.
+    */
+    function mint(address to, uint256 id, uint256 amount) public returns (bool) {
+        _mint(to, id, amount, "");
         return true;
     }
 }
