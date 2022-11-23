@@ -17,13 +17,12 @@ contract Marketplace {
     }
 
     fallback() external payable{
-        buyToken(1);
+        buyToken(1, price[1]);
     }
 
-    function buyToken(uint256 tokenId) public payable {
-        uint256 weiAmount = msg.value;
+    function buyToken(uint256 tokenId, uint256 sentWei) public payable {
         //Check for correct amount and correct tokenId
-        require(weiAmount >= price[tokenId] && price[tokenId] != 0);
+        require(sentWei >= price[tokenId] && price[tokenId] != 0);
 
         _token.safeTransferFrom(address(this), msg.sender, tokenId, 1, "");
     }
