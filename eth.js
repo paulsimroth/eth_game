@@ -30,23 +30,23 @@ walletButton.addEventListener('click', async() => {
 });
 
 async function buy(id) {
-    let value = 0;
+    let valueOption = 0;
 
     if (id == 1){
-        value = 100000000000000;
+        valueOption = 100000000000000;
     }
     else if (id == 2){
-        value = 200000000000000;
+        valueOption = 200000000000000;
     }
     else if (id == 3){
-        value = 300000000000000;
+        valueOption = 300000000000000;
     };
 
     try{
-        const tx = await marketSigner.buyToken(id, value);
+        const tx = await marketSigner.buyToken(id);
         const receipt = await tx.wait();
         console.log(receipt);
-        alert("Transaction complete! Block Hash:" + receipt.blockHash);
+        alert("Transaction complete! TX Hash:" + receipt.transactionHash);
     } catch (error){
         alert("Transaction failed: " + error.message);
         console.log(error);

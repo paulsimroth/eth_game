@@ -18576,31 +18576,31 @@
     "absolutePath": "project:/contracts/GameToken.sol",
     "exportedSymbols": {
       "Address": [
-        1922
+        1918
       ],
       "Context": [
-        1944
+        1940
       ],
       "ERC1155": [
-        1414
+        1410
       ],
       "ERC165": [
-        1968
+        1964
       ],
       "GameToken": [
         36
       ],
       "IERC1155": [
-        1536
+        1532
       ],
       "IERC1155MetadataURI": [
-        1592
+        1588
       ],
       "IERC1155Receiver": [
-        1577
+        1573
       ],
       "IERC165": [
-        1980
+        1976
       ]
     },
     "id": 37,
@@ -18628,7 +18628,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 37,
-        "sourceUnit": 1415,
+        "sourceUnit": 1411,
         "src": "69:75:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -18641,7 +18641,7 @@
               "id": 3,
               "name": "ERC1155",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1414,
+              "referencedDeclaration": 1410,
               "src": "170:7:0"
             },
             "id": 4,
@@ -18656,12 +18656,12 @@
         "id": 36,
         "linearizedBaseContracts": [
           36,
-          1414,
-          1592,
-          1536,
-          1968,
-          1980,
-          1944
+          1410,
+          1588,
+          1532,
+          1964,
+          1976,
+          1940
         ],
         "name": "GameToken",
         "nameLocation": "157:9:0",
@@ -18699,7 +18699,7 @@
                   "id": 8,
                   "name": "ERC1155",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1414,
+                  "referencedDeclaration": 1410,
                   "src": "218:7:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -18840,7 +18840,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 848,
+                      "referencedDeclaration": 844,
                       "src": "474:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_bytes_memory_ptr_$returns$__$",
@@ -19168,12 +19168,12 @@
         }
       },
       "links": {},
-      "address": "0xCBDBf349B7FE4015DbDc3c6d9DdDD571c4CE1c46",
-      "transactionHash": "0x305bcff931d305a04e13668cf3660648e69e3fa4d9a5c61223e3e8bd7d4a16b4"
+      "address": "0x151C30C6AEcb0feD81A3fBF11106F24D958d06D8",
+      "transactionHash": "0xbaeff5721518c216f24903965b343661e5348c575a35fe55b4748c407d157541"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-11-23T17:46:48.652Z",
+  "updatedAt": "2022-11-23T17:57:15.454Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

@@ -1,5 +1,3 @@
-const _token_migration = require("./2_token_migration");
-
 const Marketplace = artifacts.require("Marketplace");
 const GameToken = artifacts.require("GameToken");
 
