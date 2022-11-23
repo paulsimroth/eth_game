@@ -8,4 +8,8 @@ contract NFToken is ERC1155 {
     constructor(string memory uri) ERC1155(uri){
 
     }
+
+    function mint(address to, uint256 id, uint256 amount) public {
+        _mint(to, id, amount, "");
+    }
 }
