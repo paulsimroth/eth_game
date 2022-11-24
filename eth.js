@@ -1,7 +1,7 @@
 //WEB3 Fucntions
 let provider, signer, instance, user, address;
-const tokenAddress = "0xCBDBf349B7FE4015DbDc3c6d9DdDD571c4CE1c46";
-const marketAddress = "0xA1153A429B8ABFcDf9d8c0b32a05B787ecd236cF";
+const tokenAddress = "0x7884F80108e4ADa3bDe0BadB344185DaD207f97a";
+const marketAddress = "0x4a7b4F4F6081840988256d5Edc28ba45DF53Dfb3";
 
 async function login() {
     provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -30,20 +30,22 @@ walletButton.addEventListener('click', async() => {
 });
 
 async function buy(id) {
-    let valueOption = 0;
+    const options = {
+        value: 0
+    };
 
     if (id == 1){
-        valueOption = 100000000000000;
+        options.value = ethers.utils.parseEther("0.0001")
     }
     else if (id == 2){
-        valueOption = 200000000000000;
+        options.value = ethers.utils.parseEther("0.0002")
     }
     else if (id == 3){
-        valueOption = 300000000000000;
+        options.value = ethers.utils.parseEther("0.0003")
     };
 
     try{
-        const tx = await marketSigner.buyToken(id);
+        const tx = await marketSigner.buyToken(id, options);
         const receipt = await tx.wait();
         console.log(receipt);
         alert("Transaction complete! TX Hash:" + receipt.transactionHash);
