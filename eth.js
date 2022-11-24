@@ -14,6 +14,8 @@ async function login() {
     
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
     marketSigner = marketInstance.connect(user);
+
+    getUserItems(address);
 };
 
 const walletButton = document.querySelector('#enableWeb3');
@@ -28,6 +30,30 @@ walletButton.addEventListener('click', async() => {
         walletButton.innerHTML = "FAILED TO CONNECT WEB3; Install Web3 Provider!";
     };
 });
+
+async function getUserItems(address) {
+    console.log(address)
+    try{
+        const tokenCheck1 = await signer.balanceOf(address, 1);
+        const tokenCheck2 = await signer.balanceOf(address, 2);
+        const tokenCheck3 = await signer.balanceOf(address, 3);
+        const tokenReceipt = await Promise.all([tokenCheck1, tokenCheck2, tokenCheck3]).then(values => {
+            if(values[0] > 0){
+                console.log("user has item 1");
+            }
+            if(values[1] > 0){
+                console.log("user has item 2");
+            }
+            if(values[2] > 0){
+                console.log("user has item 3");
+            }
+        });
+        
+    } catch (error){
+        alert("getUserItems failed: " + error.message);
+        console.log(error);
+    };
+};
 
 async function buy(id) {
     const options = {
@@ -53,4 +79,4 @@ async function buy(id) {
         alert("Transaction failed: " + error.message);
         console.log(error);
     };
-}
+};
