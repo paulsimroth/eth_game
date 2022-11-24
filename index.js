@@ -14,6 +14,13 @@ let timeLeftText;
 let timeLeftTimer;
 let gameOver = false;
 
+//changed by pump talisman
+let COIN_GENERATION_INTERVALL = 4000;
+//changed by super boots
+let PLAYER_SPEED_VARIABLE = 200;
+//changed by time warp cape
+let GAME_SECONDS = 1000;
+
 //Configuration of the game
 const config = {
     width: 900,
@@ -35,8 +42,17 @@ const config = {
     }
 };
 
+//Calls login(), changes walletButton
+login(function(){
+    console.log("callback");
+    walletButton.innerHTML = address;
+    //Game
+    const game = new Phaser.Game(config);
+});
+
 //Loading assets
 function gamePreload() {
+    console.log("gamePreload");
     //Images loaded
     this.load.image("knight", "assets/knight.png");
     this.load.image("background", "assets/background.png");
@@ -70,6 +86,7 @@ function gamePreload() {
 
 //initial setup logic
 function gameCreate() {
+    console.log("gameCreate");
     //background
     this.add.image(400,250,"background");
 
@@ -150,7 +167,7 @@ function gameCreate() {
 
     //Timer for generating coins
     coinTimer = this.time.addEvent({
-        delay: Phaser.Math.Between(500, 4000),
+        delay: COIN_GENERATION_INTERVALL,
         callback: generateCoins,
         callbackScope: this,
         repeat: -1
@@ -158,7 +175,7 @@ function gameCreate() {
 
     //Timer for time left
     timeLeftTimer = this.time.addEvent({
-        delay: 1000,
+        delay: GAME_SECONDS,
         callback: updateTimeLeft,
         callbackScope: this,
         repeat: -1
@@ -209,12 +226,12 @@ function collectCoin(knight, coin){
 //Monitoring inputs and updating game
 function gameUpdate() {
     if(cursors.left.isDown){
-        knight.setVelocityX(-200);
+        knight.setVelocityX(-PLAYER_SPEED_VARIABLE);
         knight.play("knight_run", true);
         knight.flipX = true;
     } 
     else if(cursors.right.isDown){
-        knight.setVelocityX(200);
+        knight.setVelocityX(PLAYER_SPEED_VARIABLE);
         knight.play("knight_run", true);
         knight.flipX = false;
     }
@@ -227,6 +244,3 @@ function gameUpdate() {
         knight.setVelocityY(-350);
     }
 };
-
-//Game
-const game = new Phaser.Game(config);

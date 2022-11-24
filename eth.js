@@ -3,19 +3,23 @@ let provider, signer, instance, user, address;
 const tokenAddress = "0x7884F80108e4ADa3bDe0BadB344185DaD207f97a";
 const marketAddress = "0x4a7b4F4F6081840988256d5Edc28ba45DF53Dfb3";
 
-async function login() {
+async function login(callback) {
+    //Initial setup
     provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     user = provider.getSigner();
     address = await user.getAddress();
-
+    //Instancee for Token
     instance = new ethers.Contract(tokenAddress, abi, provider);
     signer = instance.connect(user);
-    
+    //Instance for Marketplace
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
     marketSigner = marketInstance.connect(user);
 
-    getUserItems(address);
+    //once logged in users items are retrieved
+    await getUserItems(address);
+    //callback
+    callback();
 };
 
 const walletButton = document.querySelector('#enableWeb3');
@@ -38,14 +42,23 @@ async function getUserItems(address) {
         const tokenCheck2 = await signer.balanceOf(address, 2);
         const tokenCheck3 = await signer.balanceOf(address, 3);
         const tokenReceipt = await Promise.all([tokenCheck1, tokenCheck2, tokenCheck3]).then(values => {
-            if(values[0] > 0){
-                console.log("user has item 1");
+            
+        const numberOfTalismans = values[0];
+        const numberOfBoots = values[1];
+        const numberOfCapes = values[2];
+        
+        //Item effects on game behaviour set
+            if(numberOfTalismans > 0){
+                COIN_GENERATION_INTERVALL = COIN_GENERATION_INTERVALL * Math.pow(0.75, numberOfTalismans);
+                console.log("COIN_GENERATION_INTERVALL", COIN_GENERATION_INTERVALL);
             }
-            if(values[1] > 0){
-                console.log("user has item 2");
+            if(numberOfBoots > 0){
+                PLAYER_SPEED_VARIABLE = PLAYER_SPEED_VARIABLE * Math.pow(1.3, numberOfBoots);
+                console.log("PLAYER_SPEED_VARIABLE", PLAYER_SPEED_VARIABLE);
             }
-            if(values[2] > 0){
-                console.log("user has item 3");
+            if(numberOfCapes > 0){
+                GAME_SECONDS = GAME_SECONDS * Math.pow(1.5, numberOfCapes);
+                console.log("GAME_SECONDS", GAME_SECONDS);
             }
         });
         
