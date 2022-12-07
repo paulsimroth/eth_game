@@ -43,23 +43,23 @@ async function getUserItems(address) {
         const tokenCheck3 = await signer.balanceOf(address, 3);
         const tokenReceipt = await Promise.all([tokenCheck1, tokenCheck2, tokenCheck3]).then(values => {
             
-        const numberOfTalismans = values[0];
-        const numberOfBoots = values[1];
-        const numberOfCapes = values[2];
-        
-        //Item effects on game behaviour set
-            if(numberOfTalismans > 0){
-                COIN_GENERATION_INTERVALL = COIN_GENERATION_INTERVALL * Math.pow(0.75, numberOfTalismans);
-                console.log("COIN_GENERATION_INTERVALL", COIN_GENERATION_INTERVALL);
-            }
-            if(numberOfBoots > 0){
-                PLAYER_SPEED_VARIABLE = PLAYER_SPEED_VARIABLE * Math.pow(1.3, numberOfBoots);
-                console.log("PLAYER_SPEED_VARIABLE", PLAYER_SPEED_VARIABLE);
-            }
-            if(numberOfCapes > 0){
-                GAME_SECONDS = GAME_SECONDS * Math.pow(1.5, numberOfCapes);
-                console.log("GAME_SECONDS", GAME_SECONDS);
-            }
+            const numberOfTalismans = values[0];
+            const numberOfBoots = values[1];
+            const numberOfCapes = values[2];
+            
+            //Item effects on game behaviour set
+                if(numberOfTalismans > 0){
+                    COIN_GENERATION_INTERVALL = COIN_GENERATION_INTERVALL * Math.pow(0.75, numberOfTalismans);
+                    console.log("COIN_GENERATION_INTERVALL", COIN_GENERATION_INTERVALL);
+                }
+                if(numberOfBoots > 0){
+                    PLAYER_SPEED_VARIABLE = PLAYER_SPEED_VARIABLE * Math.pow(1.3, numberOfBoots);
+                    console.log("PLAYER_SPEED_VARIABLE", PLAYER_SPEED_VARIABLE);
+                }
+                if(numberOfCapes > 0){
+                    GAME_SECONDS = GAME_SECONDS * Math.pow(1.5, numberOfCapes);
+                    console.log("GAME_SECONDS", GAME_SECONDS);
+                }
         });
         
     } catch (error){

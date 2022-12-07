@@ -8,22 +8,23 @@
     <script src="//cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser.min.js"></script>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
         type="application/javascript"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1 class="">Welcome to my ETH Game</h1>
-    <div class="">
+    <h1>Welcome to my ETH Game</h1>
+    <div>
         <button id="enableWeb3" class="login-btn">Connect Wallet</button>
     </div>
-    <br/>
-    <div>
-        <h2>Pump your Bag!</h2>
-        <button onclick="buy(1)" id="buyId1" class="buy-items">Buy Pump Talisman for 0,0001 ETH</button>
+    <h2>Pump your Bag!</h2>
+    <div class="btn-div">
+        <button onclick="buy(1)" id="buyId1" class="buy-btn">Buy Pump Talisman, 0,0001 ETH</button>
         <br/>
-        <button onclick="buy(2)" id="buyId2" class="buy-items">Buy Super Boots for 0,0002 ETH</button>
+        <button onclick="buy(2)" id="buyId2" class="buy-btn">Buy Super Boots, 0,0002 ETH</button>
         <br/>
-        <button onclick="buy(3)" id="buyId3" class="buy-items">Buy Time Warp Cape for 0,0003 ETH</button>
+        <button onclick="buy(3)" id="buyId3" class="buy-btn">Buy Time Warp Cape, 0,0003 ETH</button>
+        <div id="notifications" class="msg"></div>
     </div> 
-    <div id="notifications" class=""></div>
+    
 </body>
     <script src="./abi.js"></script>
     <script src="./eth.js"></script>

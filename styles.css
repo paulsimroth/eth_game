@@ -1,0 +1,53 @@
+body {
+    background-color:bisque;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 45px;
+    margin-left: 15px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.btn-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.buy-btn {
+    width: 110px;
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background-color:rgb(52, 172, 132);
+    border: 2px solid black;
+}
+
+.buy-btn:hover {
+    border: 2px solid rgb(31, 233, 75);
+}
+
+.login-btn {
+    height: 30px;
+    margin: 15px;
+    box-sizing: border-box;
+    text-align: start;
+    color: #fff;
+    background-color:rgb(52, 172, 132);
+    border: 2px solid black;
+}
+
+.login-btn:hover {
+    border: 2px solid rgb(31, 233, 75);
+}
+
+.msg {
+    height: 50px;
+}
