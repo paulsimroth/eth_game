@@ -13,6 +13,7 @@ let secondsLeft = 60;
 let timeLeftText;
 let timeLeftTimer;
 let gameOver = false;
+let coinsSent = false;
 
 //changed by pump talisman
 let COIN_GENERATION_INTERVALL = 4000;
@@ -183,7 +184,11 @@ function gameCreate() {
 };
 
 async function updateTimeLeft() {
-    if(gameOver) {
+    if(gameOver){
+        if(!coinsSent){
+            await mintAfterGame(score);
+            coinsSent = true;
+        };
         return;
     };
 

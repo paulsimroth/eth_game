@@ -1,5 +1,6 @@
 //WEB3 Fucntions
 let provider, signer, instance, user, address;
+const coinAddress = "0x478C55D09fCCFd1aeA6547d2a1FE1550C54209FE";
 const tokenAddress = "0x7884F80108e4ADa3bDe0BadB344185DaD207f97a";
 const marketAddress = "0x4a7b4F4F6081840988256d5Edc28ba45DF53Dfb3";
 
@@ -9,9 +10,12 @@ async function login(callback) {
     await provider.send("eth_requestAccounts", []);
     user = provider.getSigner();
     address = await user.getAddress();
+    //Instance for Coin
+    coinInstance = new ethers.Contract(coinAddress, coinAbi, provider);
+    coinSigner = instance.connect(user);
     //Instancee for Token
-    instance = new ethers.Contract(tokenAddress, abi, provider);
-    signer = instance.connect(user);
+    tokenInstance = new ethers.Contract(tokenAddress, tokenAbi, provider);
+    tokenSigner = instance.connect(user);
     //Instance for Marketplace
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
     marketSigner = marketInstance.connect(user);
@@ -23,7 +27,6 @@ async function login(callback) {
 };
 
 const walletButton = document.querySelector('#enableWeb3');
-
 walletButton.addEventListener('click', async() => {
     //Will Start the metamask extension
     if (window.ethereum) { 
@@ -93,3 +96,17 @@ async function buy(id) {
         console.log(error);
     };
 };
+
+async function mintAfterGame(tokenCount) {
+    let _address = address;
+    console.log("_address", _address);
+    try{
+        const tx = await signer.mint(_address, tokenCount);
+        const receipt = await tx.wait();
+        console.log(receipt);
+        alert("Transaction complete: " + receipt);
+    } catch (error){
+        alert("Transaction failed: " + error.message);
+        console.log(error);
+    };
+}
