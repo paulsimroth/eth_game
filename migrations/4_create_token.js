@@ -2,22 +2,7 @@ const Marketplace = artifacts.require("Marketplace");
 const GameToken = artifacts.require("GameToken");
 
 module.exports = (deployer) => deployer
-/*   .then( () => createToken1())
-  .then( () => createToken2())
-  .then( () => createToken3()) */
   .then( () => mintTokens());
-
-/* async function createToken1() { 
-  (await NFToken.deployed()).create(0, "");
-};
-
-async function createToken2() { 
-  (await NFToken.deployed()).create(0, "");
-};
-
-async function createToken3() { 
-  (await NFToken.deployed()).create(0, "");
-}; */
 
 function mintTokens() {
   GameToken.deployed().then(instance => {
