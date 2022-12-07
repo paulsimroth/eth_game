@@ -1,5 +1,5 @@
-//WEB3 Fucntions
-let provider, signer, instance, user, address;
+//WEB3 Functions
+let provider, coinSigner, tokenSigner, marketSigner, coinInstance, tokenInstance, marketInstance, user, address;
 const coinAddress = "0x478C55D09fCCFd1aeA6547d2a1FE1550C54209FE";
 const tokenAddress = "0x7884F80108e4ADa3bDe0BadB344185DaD207f97a";
 const marketAddress = "0x4a7b4F4F6081840988256d5Edc28ba45DF53Dfb3";
@@ -12,10 +12,10 @@ async function login(callback) {
     address = await user.getAddress();
     //Instance for Coin
     coinInstance = new ethers.Contract(coinAddress, coinAbi, provider);
-    coinSigner = instance.connect(user);
+    coinSigner = coinInstance.connect(user);
     //Instancee for Token
     tokenInstance = new ethers.Contract(tokenAddress, tokenAbi, provider);
-    tokenSigner = instance.connect(user);
+    tokenSigner = tokenInstance.connect(user);
     //Instance for Marketplace
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
     marketSigner = marketInstance.connect(user);
@@ -101,7 +101,7 @@ async function mintAfterGame(tokenCount) {
     let _address = address;
     console.log("_address", _address);
     try{
-        const tx = await signer.mint(_address, tokenCount);
+        const tx = await coinSigner.mint(_address, tokenCount);
         const receipt = await tx.wait();
         console.log(receipt);
         alert("Transaction complete: " + receipt);
