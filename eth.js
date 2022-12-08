@@ -20,9 +20,10 @@ async function login(callback) {
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
     marketSigner = marketInstance.connect(user);
 
-    //once logged in users items are retrieved
+    //once logged in users items and coins are retrieved
     await getUserItems(address);
     await getCoins(address);
+
     //callback
     callback();
 };
@@ -44,9 +45,9 @@ async function mintAfterGame(tokenCount) {
     console.log("mintAfterGame _address", _address);
     try{
         const tx = await coinSigner.mint(_address, tokenCount);
-        /* const receipt = await tx.wait(); */
-        console.log(tx);
-        alert("Transaction complete: " + tx.blockHash);
+        const receipt = await tx.wait();
+        console.log(receipt);
+        alert("Transaction complete: " + receipt.blockHash);
     } catch (error){
         alert("Transaction failed: " + error.message);
         console.log(error);
@@ -54,14 +55,12 @@ async function mintAfterGame(tokenCount) {
 };
 
 const coinBalance = document.querySelector('.balance');
-async function getCoins() {
-    let _address = address;
-    console.log("getCoins _address", _address);
+async function getCoins(address) {
+    console.log("getCoins _address", address);
     try{
-        const tx = await coinSigner.balanceOf(_address);
-/*         const receipt = await tx.wait(); */
+        const tx = await coinSigner.balanceOf(address);
         console.log("getCoins", tx);
-        coinBalance.innerHTML = `<p>Your Balance of the GameCoin is: ${tx}GCT</p>`;
+        coinBalance.innerHTML = `<p>Your Balance of the GameCoin is: ${tx} GCT</p>`;
     } catch (error){
         alert("Transaction failed: " + error.message);
         console.log(error);
