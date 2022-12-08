@@ -36,7 +36,7 @@ h2 {
 
 .login-btn {
     height: 30px;
-    margin: 15px;
+    margin-left: 15px;
     box-sizing: border-box;
     text-align: start;
     color: #fff;
@@ -48,10 +48,16 @@ h2 {
     border: 2px solid rgb(31, 233, 75);
 }
 
+.error {
+    color: rgb(0, 0, 0);
+    background-color:rgb(194, 80, 35);
+    border: 2px solid rgb(252, 95, 95);
+}
+
 .msg {
     height: 50px;
 }
 
 .balance {
-    font-style: oblique;
+    margin: 15px;
 }

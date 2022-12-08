@@ -36,7 +36,7 @@ walletButton.addEventListener('click', async() => {
         await login();
         walletButton.innerHTML = address;
     } else {
-        walletButton.innerHTML = "FAILED TO CONNECT WEB3; Install Web3 Provider!";
+        walletButton.innerHTML = `<p class="error">FAILED TO CONNECT WEB3; Install Web3 Provider!</p>`;
     };
 });
 
