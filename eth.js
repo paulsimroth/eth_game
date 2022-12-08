@@ -1,8 +1,8 @@
 //WEB3 Functions
 let provider, coinSigner, tokenSigner, marketSigner, coinInstance, tokenInstance, marketInstance, user, address;
-const coinAddress = "0xC0A303cb03F881cBFB66E9596ff085A68D916861";
-const tokenAddress = "0xA5C99e3ea974F679A06696d47a1Ac6340eE5e5F6";
-const marketAddress = "0xe2A0D350C0e556409Ec426370041dA650ED17632";
+const coinAddress = "0x390BB6bD876D0FcD3E87131a33B61c8205c3E674";
+const tokenAddress = "0x2c2435E305285aE679C167a7E64a16490Db309d7";
+const marketAddress = "0x25b500a7320BD6dabeFB1b8d8dc0759173702EAf";
 
 async function login(callback) {
     //Initial setup
@@ -101,27 +101,25 @@ async function getUserItems(address) {
 };
 
 async function buy(id) {
-    const options = {
-        value: 0
-    };
+    let value = 0
 
     if (id == 1){
-        options.value = ethers.utils.parseEther("0.0001")
+        value = 10
     }
     else if (id == 2){
-        options.value = ethers.utils.parseEther("0.0002")
+        value = 20
     }
     else if (id == 3){
-        options.value = ethers.utils.parseEther("0.0003")
+        value = 30
     };
 
     try{
-        const tx = await marketSigner.buyToken(id, options);
+        const tx = await marketSigner.buyToken(id, value);
         const receipt = await tx.wait();
         console.log(receipt);
         alert("Transaction complete! TX Hash:" + receipt.transactionHash);
     } catch (error){
-        alert("Transaction failed: " + error.message);
+        alert("Transaction failed: " + error);
         console.log(error);
     };
 };

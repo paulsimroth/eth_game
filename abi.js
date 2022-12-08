@@ -680,7 +680,12 @@ const marketAbi = [
     "inputs": [
       {
         "internalType": "contract IERC1155",
-        "name": "token",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IERC20",
+        "name": "coinAddress",
         "type": "address"
       }
     ],
@@ -695,8 +700,33 @@ const marketAbi = [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "buyOffer",
         "type": "uint256"
       }
     ],

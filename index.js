@@ -186,7 +186,6 @@ function gameCreate() {
 async function updateTimeLeft() {
     if(gameOver){
         if(!coinsSent){
-            console.log("Score after Game", score);
             coinsSent = true;
             await mintAfterGame(score);
         };
