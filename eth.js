@@ -1,8 +1,8 @@
 //WEB3 Functions
 let provider, coinSigner, tokenSigner, marketSigner, coinInstance, tokenInstance, marketInstance, user, address;
-const coinAddress = "0x478C55D09fCCFd1aeA6547d2a1FE1550C54209FE";
-const tokenAddress = "0x7884F80108e4ADa3bDe0BadB344185DaD207f97a";
-const marketAddress = "0x4a7b4F4F6081840988256d5Edc28ba45DF53Dfb3";
+const coinAddress = "0xC0A303cb03F881cBFB66E9596ff085A68D916861";
+const tokenAddress = "0xA5C99e3ea974F679A06696d47a1Ac6340eE5e5F6";
+const marketAddress = "0xe2A0D350C0e556409Ec426370041dA650ED17632";
 
 async function login(callback) {
     //Initial setup
@@ -22,6 +22,7 @@ async function login(callback) {
 
     //once logged in users items are retrieved
     await getUserItems(address);
+    await getCoins(address);
     //callback
     callback();
 };
@@ -38,12 +39,41 @@ walletButton.addEventListener('click', async() => {
     };
 });
 
-async function getUserItems(address) {
-    console.log(address)
+async function mintAfterGame(tokenCount) {
+    let _address = address;
+    console.log("mintAfterGame _address", _address);
     try{
-        const tokenCheck1 = await signer.balanceOf(address, 1);
-        const tokenCheck2 = await signer.balanceOf(address, 2);
-        const tokenCheck3 = await signer.balanceOf(address, 3);
+        const tx = await coinSigner.mint(_address, tokenCount);
+        /* const receipt = await tx.wait(); */
+        console.log(tx);
+        alert("Transaction complete: " + tx.blockHash);
+    } catch (error){
+        alert("Transaction failed: " + error.message);
+        console.log(error);
+    };
+};
+
+const coinBalance = document.querySelector('.balance');
+async function getCoins() {
+    let _address = address;
+    console.log("getCoins _address", _address);
+    try{
+        const tx = await coinSigner.balanceOf(_address);
+/*         const receipt = await tx.wait(); */
+        console.log("getCoins", tx);
+        coinBalance.innerHTML = `<p>Your Balance of the GameCoin is: ${tx}GCT</p>`;
+    } catch (error){
+        alert("Transaction failed: " + error.message);
+        console.log(error);
+    };
+};
+
+async function getUserItems(address) {
+    console.log("getUserItems", address)
+    try{
+        const tokenCheck1 = await tokenSigner.balanceOf(address, 1);
+        const tokenCheck2 = await tokenSigner.balanceOf(address, 2);
+        const tokenCheck3 = await tokenSigner.balanceOf(address, 3);
         const tokenReceipt = await Promise.all([tokenCheck1, tokenCheck2, tokenCheck3]).then(values => {
             
             const numberOfTalismans = values[0];
@@ -96,17 +126,3 @@ async function buy(id) {
         console.log(error);
     };
 };
-
-async function mintAfterGame(tokenCount) {
-    let _address = address;
-    console.log("_address", _address);
-    try{
-        const tx = await coinSigner.mint(_address, tokenCount);
-        const receipt = await tx.wait();
-        console.log(receipt);
-        alert("Transaction complete: " + receipt);
-    } catch (error){
-        alert("Transaction failed: " + error.message);
-        console.log(error);
-    };
-}
