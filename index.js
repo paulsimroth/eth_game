@@ -52,8 +52,8 @@ login(function(){
 });
 
 //Loading assets
+//GAME PRELOAD
 function gamePreload() {
-    console.log("gamePreload");
     //Images loaded
     this.load.image("knight", "assets/knight.png");
     this.load.image("background", "assets/background.png");
@@ -86,8 +86,8 @@ function gamePreload() {
 };
 
 //initial setup logic
+//GAME CREATE
 function gameCreate() {
-    console.log("gameCreate");
     //background
     this.add.image(400,250,"background");
 
@@ -229,6 +229,7 @@ function collectCoin(knight, coin){
 };
 
 //Monitoring inputs and updating game
+//GAME UPDATE
 function gameUpdate() {
     if(cursors.left.isDown){
         knight.setVelocityX(-PLAYER_SPEED_VARIABLE);

@@ -35,7 +35,6 @@ contract Marketplace {
         //Check for correct amount and correct tokenId
         require(buyOffer >= price[tokenId] && price[tokenId] != 0);
         require(balanceOf(msg.sender) >= price[tokenId]);
-        _coin.approve(address(this), buyOffer);
         _coin.transferFrom(msg.sender, address(this), buyOffer);
         _token.safeTransferFrom(address(this), msg.sender, tokenId, 1, "");
         

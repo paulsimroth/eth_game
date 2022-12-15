@@ -9150,19 +9150,19 @@
     "absolutePath": "project:/contracts/GameCoin.sol",
     "exportedSymbols": {
       "Context": [
-        2740
+        2730
       ],
       "ERC20": [
-        2285
+        2275
       ],
       "GameCoin": [
         34
       ],
       "IERC20": [
-        2363
+        2353
       ],
       "IERC20Metadata": [
-        2388
+        2378
       ]
     },
     "id": 35,
@@ -9190,7 +9190,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 35,
-        "sourceUnit": 2286,
+        "sourceUnit": 2276,
         "src": "69:71:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -9203,7 +9203,7 @@
               "id": 3,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2285,
+              "referencedDeclaration": 2275,
               "src": "283:5:0"
             },
             "id": 4,
@@ -9218,10 +9218,10 @@
         "id": 34,
         "linearizedBaseContracts": [
           34,
-          2285,
-          2388,
-          2363,
-          2740
+          2275,
+          2378,
+          2353,
+          2730
         ],
         "name": "GameCoin",
         "nameLocation": "271:8:0",
@@ -9271,7 +9271,7 @@
                   "id": 10,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2285,
+                  "referencedDeclaration": 2275,
                   "src": "354:5:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -9403,7 +9403,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2102,
+                      "referencedDeclaration": 2092,
                       "src": "460:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -9579,12 +9579,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x390BB6bD876D0FcD3E87131a33B61c8205c3E674",
-      "transactionHash": "0x9ac845b7dfa8c6d66c70fd9d3b7ce0360ab5a05c9278c96450db4261fd8a3111"
+      "address": "0x5365B6Db506c7b817F89e36c79961a71345Adc78",
+      "transactionHash": "0xcaf1d265b22d18add4f9879d5a2310b79f85dfaa079a3935135134e00ae813d6"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-12-08T13:27:50.520Z",
+  "updatedAt": "2022-12-15T11:38:28.993Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
