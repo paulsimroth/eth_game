@@ -1,13 +1,14 @@
 # eth_game
 
-## general info about the project
+## General info about the project
 In this repository you can see my version of the game coded as part of the course "Ethereum Game Programming" at Moralis Academy.
-For the game animation Phaser 3.15.1 was used.
-The boosts you aquire in the game are ERC1155 Tokens and change the behaviour of the game, like increasing speed, increasing coin generation and slowing the timer.
+For the game animation Phaser 3.15.1 was used. The sprites were provided as part of the course. 
 
 ## How does it work
-After the course project was finished as intended I changed a few things. Now at the end of every Game you get the number of Tokens you aquired as an ERC20 Token wiht the name GameCoin and the Ticker GCT. 
-With this ERC20 Token you can buy the ERC1155 which represent boosts.
+You play as a knight and have to collect as many coins as possible.
+After the course project was finished as intended I changed a few things. Now at the end of every Game you get the number of Tokens you aquired as an ERC20 Token with the name "GameCoin" and the Ticker "GCT".
+The boosts you aquire in the game are ERC1155 Tokens and change the behaviour of the game, like increasing speed, increasing coin generation and slowing the timer.
+With this ERC20 Token you can buy the ERC1155 boost tokens.
 At login your items get retrieved and you are asked to confirm that the Market Contract my use your tokens.
 
 ### Disclaimer
