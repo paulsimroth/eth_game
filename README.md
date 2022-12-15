@@ -2,7 +2,9 @@
 
 ## General info about the project
 In this repository you can see my version of the game coded as part of the course "Ethereum Game Programming" at Moralis Academy.
-For the game animation Phaser 3.15.1 was used. The sprites were provided as part of the course. 
+For the game animation Phaser 3.15.1 was used. The sprites were provided as part of the course.
+
+The Game is deployed on the Goerli Test Network
 
 ## How does it work
 You play as a knight and have to collect as many coins as possible.
