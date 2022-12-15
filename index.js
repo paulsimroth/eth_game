@@ -158,10 +158,10 @@ function gameCreate() {
     this.physics.add.collider(crates, knight);
 
     //Score Text
-    scoreText = this.add.text(16, 16, "Bitcoin Bag: 0", {fontSize:"32px", fill:"#000"});
+    scoreText = this.add.text(6, 16, "Bitcoin Bag: 0", {fontSize:"32px", fill:"#000"});
 
     //Time Left Text
-    timeLeftText = this.add.text(16, 66, secondsLeft + " Seconds left", {fontSize:"30px", fill:"#000"});
+    timeLeftText = this.add.text(6, 56, secondsLeft + " Seconds left", {fontSize:"30px", fill:"#000"});
 
     //Keyboard inputs
     cursors = this.input.keyboard.createCursorKeys();
