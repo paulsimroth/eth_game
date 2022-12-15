@@ -14,12 +14,15 @@ async function login(callback) {
     await provider.send("eth_requestAccounts", []);
     user = provider.getSigner();
     address = await user.getAddress();
+
     //Instance for Coin
     coinInstance = new ethers.Contract(coinAddress, coinAbi, provider);
     coinSigner = coinInstance.connect(user);
+
     //Instancee for Token
     tokenInstance = new ethers.Contract(tokenAddress, tokenAbi, provider);
     tokenSigner = tokenInstance.connect(user);
+
     //Instance for Marketplace
     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
     marketSigner = marketInstance.connect(user);
@@ -58,6 +61,7 @@ walletButton.addEventListener('click', async() => {
 async function mintAfterGame(tokenCount) {
     let _address = address;
     console.log("mintAfterGame _address", _address);
+
     try{
         const tx = await coinSigner.mint(_address, tokenCount);
         const receipt = await tx.wait();
@@ -96,10 +100,12 @@ async function getUserItems(address) {
                     COIN_GENERATION_INTERVALL = COIN_GENERATION_INTERVALL * Math.pow(0.75, numberOfTalismans);
                     console.log("COIN_GENERATION_INTERVALL", COIN_GENERATION_INTERVALL);
                 }
+
                 if(numberOfBoots > 0){
                     PLAYER_SPEED_VARIABLE = PLAYER_SPEED_VARIABLE * Math.pow(1.3, numberOfBoots);
                     console.log("PLAYER_SPEED_VARIABLE", PLAYER_SPEED_VARIABLE);
                 }
+                
                 if(numberOfCapes > 0){
                     GAME_SECONDS = GAME_SECONDS * Math.pow(1.5, numberOfCapes);
                     console.log("GAME_SECONDS", GAME_SECONDS);
