@@ -19,7 +19,8 @@
     },
     {
       "stateMutability": "payable",
-      "type": "fallback"
+      "type": "fallback",
+      "payable": true
     },
     {
       "inputs": [
@@ -38,7 +39,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -56,7 +58,8 @@
       "name": "buyToken",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -7793,6 +7796,12 @@
     "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
   },
   "networks": {
+    "5": {
+      "events": {},
+      "links": {},
+      "address": "0x41EC4Ed7ea53fB4d4eE4Ef3da2b4F04eC1161FE5",
+      "transactionHash": "0x27f1321194d6104867747972c94ffd79bc1c466f90fc6784c527f331de3bc515"
+    },
     "5777": {
       "events": {},
       "links": {},
@@ -7801,7 +7810,8 @@
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-12-15T13:10:40.146Z",
+  "updatedAt": "2022-12-15T13:29:53.561Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -3,9 +3,9 @@
 let provider, coinSigner, tokenSigner, marketSigner, coinInstance, tokenInstance, marketInstance, user, address;
 
 //Contract Addresses
-const coinAddress = "0x5365B6Db506c7b817F89e36c79961a71345Adc78";
-const tokenAddress = "0x990baB8A26aA2902BB9BBE71c9C92823027F8c40";
-const marketAddress = "0x30fba7557c38C140afEA8592A5Be966dd918617A";
+const coinAddress = "0xf1130c12299eD8487FF1e7651f16Fa19aD258D10";
+const tokenAddress = "0x77d97e471e804494af0F8cFfd7e8B14C56E3f827";
+const marketAddress = "0x41EC4Ed7ea53fB4d4eE4Ef3da2b4F04eC1161FE5";
 
 //Login function includes fetching items and coins from user
 async function login(callback) {
