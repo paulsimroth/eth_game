@@ -65,6 +65,12 @@ async function mintAfterGame(tokenCount) {
     try{
         const tx = await coinSigner.mint(_address, tokenCount);
         const receipt = await tx.wait();
+
+        //Retrieve Items for display
+        await getUserItems(_address);
+        await getCoins(_address);
+
+        //Alert Msg
         alert("Transaction complete: " + receipt.blockHash);
     } catch (error){
         alert("Transaction failed: " + error.message);
@@ -132,8 +138,15 @@ async function buy(id) {
     };
 
     try{
+        //Buy Items from Marketplace
         const tx = await marketSigner.buyToken(id, value);
         const receipt = await tx.wait();
+
+        //Retrieve Items for display
+        await getUserItems(address);
+        await getCoins(address);
+        
+        //Alert Msg
         alert("Transaction complete! TX Hash:" + receipt.transactionHash);
     } catch (error){
         alert("Transaction failed: " + error);
