@@ -17,11 +17,12 @@ At login your items get retrieved and you are asked to confirm that the Market C
 
 - Solidity (Writing Smart Contract)
 - Javascript (Frontend & Testing)
+- [Phaser](https://phaser.io/) (Game Framework)
 - [Ethers](https://docs.ethers.io/v5/) (Blockchain Interaction)
 - [Truffle](https://trufflesuite.com/docs/truffle/) (Development Framework)
 - [Ganache](https://trufflesuite.com/docs/ganache//) (Development personal Blockchain)
 
-### Disclaimer
+## Disclaimer
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
